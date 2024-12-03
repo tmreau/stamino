@@ -1,25 +1,38 @@
-.DS_Store
-.class
-*.log
-.history
+# Config
+application.conf
 
+# macOS
+.DS_Store
+
+# sbt specific
+dist/*
 target/
 lib_managed/
 src_managed/
 project/boot/
 project/plugins/project/
+project/local-plugins.sbt
+.history
+.ensime
+.ensime_cache/
+.sbt-scripted/
+local.sbt
 
-*.sublime-project
-*.sublime-workspace
-sublime.sbt
-.sublime
+# Bloop
+.bsp
 
-.idea/*
-.idea_modules/*
+# VS Code
+.vscode/
 
-.scala_dependencies
-.project
-.classpath
-.cache
-.settings
+# Metals
+.bloop/
+.metals/
+metals.sbt
+
+# IDEA
+.idea
+.idea_modules
+/.worksheet/
+
+# Others
 .tool-versions
