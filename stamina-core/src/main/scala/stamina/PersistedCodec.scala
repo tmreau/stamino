@@ -23,7 +23,7 @@ object DefaultPersistedCodec extends PersistedCodec {
   implicit val byteOrder = java.nio.ByteOrder.LITTLE_ENDIAN
   import java.nio.charset.StandardCharsets._
 
-  def identifier = 490303
+  def identifier = 19081992 // hb charley
 
   def writePersisted(persisted: Persisted): Array[Byte] = {
     val keyBytes = persisted.key.getBytes(UTF_8)

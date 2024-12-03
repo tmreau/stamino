@@ -1,8 +1,8 @@
 package stamina
 
 import scala.reflect._
-import akka.actor._
-import akka.serialization._
+import org.apache.pekko.actor._
+import org.apache.pekko.serialization._
 
 object TestOnlyPersister {
   private val system = ActorSystem("TestOnlyPersister")

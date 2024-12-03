@@ -1,8 +1,8 @@
 
 package object stamina {
-  /** Type alias for Akka's ByteSttring so we don't have to import it everywhere. */
-  type ByteString = akka.util.ByteString
-  val ByteString = akka.util.ByteString
+  /** Type alias for Pekko's ByteSttring so we don't have to import it everywhere. */
+  type ByteString = org.apache.pekko.util.ByteString
+  val ByteString = org.apache.pekko.util.ByteString
 }
 
 /**
@@ -10,14 +10,14 @@ package object stamina {
  */
 package stamina {
   /**
-   * Marker trait for classes that should be persisted using the StaminaAkkaSerializer.
+   * Marker trait for classes that should be persisted using the StaminaPekkoSerializer.
    *
    * This marker trait can be used to mark all your top-level persistable classes
    * (i.e. events, snapshots, etc.) so that you will only need a few lines of
    * configuration in your application.conf, namely:
    * {{{
-   * akka.actor.serializers.stamina = <FQCN of your subclass of StaminaAkkaSerializer>
-   * akka.actor.serialization-bindings {
+   * pekko.actor.serializers.stamina = <FQCN of your subclass of StaminaPekkoSerializer>
+   * pekko.actor.serialization-bindings {
    *   "stamina.Persistable" = stamina
    * }
    * }}}

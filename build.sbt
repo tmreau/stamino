@@ -43,7 +43,7 @@ lazy val core = Project("stamina-core", file("stamina-core"))
   .enablePlugins(FormattingPlugin)
   .settings(libSettings: _*)
   .settings(
-    libraryDependencies ++= compileDeps(akkaActor) ++ testDeps(scalatest)
+    libraryDependencies ++= compileDeps(pekkoActor) ++ testDeps(scalatest)
   )
   .enablePlugins(ReproducibleBuildsPlugin)
 

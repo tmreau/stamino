@@ -1,6 +1,6 @@
 package stamina
 
-class StaminaAkkaSerializerSpec extends StaminaSpec {
+class StaminaPekkoSerializerSpec extends StaminaSpec {
   import TestDomain._
   import TestOnlyPersister._
   import DefaultPersistedCodec._
@@ -9,15 +9,15 @@ class StaminaAkkaSerializerSpec extends StaminaSpec {
   val cartPersister = persister[Cart]("cart")
   val cartCreatedPersister = persister[CartCreated]("cart-created")
 
-  class MyAkkaSerializer1a extends StaminaAkkaSerializer(List(itemPersister, cartPersister, cartCreatedPersister))
-  class MyAkkaSerializer1b extends StaminaAkkaSerializer(List(itemPersister, cartPersister, cartCreatedPersister), DefaultPersistedCodec)
-  class MyAkkaSerializer2 extends StaminaAkkaSerializer(itemPersister, cartPersister, cartCreatedPersister)
+  class MyPekkoSerializer1a extends StaminaPekkoSerializer(List(itemPersister, cartPersister, cartCreatedPersister))
+  class MyPekkoSerializer1b extends StaminaPekkoSerializer(List(itemPersister, cartPersister, cartCreatedPersister), DefaultPersistedCodec)
+  class MyPekkoSerializer2 extends StaminaPekkoSerializer(itemPersister, cartPersister, cartCreatedPersister)
 
-  val serializer = new MyAkkaSerializer1a
+  val serializer = new MyPekkoSerializer1a
 
   import serializer._
 
-  "The StaminaAkkaSerializer" should {
+  "The StaminaPekkoSerializer" should {
     "correctly serialize and deserialize the current version of the domain" in {
       fromBinary(toBinary(item1)) should equal(item1)
       fromBinary(toBinary(item2)) should equal(item2)

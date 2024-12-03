@@ -22,4 +22,4 @@ sublime.sbt
 .classpath
 .cache
 .settings
-
+.tool-versions

@@ -4,9 +4,9 @@ import scala.reflect.ClassTag
 
 /**
  * Persisters is the bridge between the type-safe world of <code>Persister[T, V]</code>
- * and the untyped, AnyRef world of Akka serializers. It wraps one or more
+ * and the untyped, AnyRef world of Pekko serializers. It wraps one or more
  * instances of <code>Persister[_, _]</code> and combines them together to form
- * one single entry-point for subclasses of <code>StaminaAkkaSerializer</code>
+ * one single entry-point for subclasses of <code>StaminaPekkoSerializer</code>
  *
  */
 case class Persisters(persisters: List[Persister[_, _]]) {

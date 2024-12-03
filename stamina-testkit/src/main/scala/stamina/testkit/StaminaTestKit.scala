@@ -77,7 +77,7 @@ trait StaminaTestKit { self: org.scalatest.wordspec.AnyWordSpecLike =>
         .map(Success(_)).getOrElse(Failure(new java.io.FileNotFoundException(resourceName)))
         .map(Source.fromInputStream(_).mkString)
         .flatMap(decodeBase64)
-        .map(akka.util.ByteString(_))
+        .map(org.apache.pekko.util.ByteString(_))
         .map(Persisted(key, version, _))
     }
 

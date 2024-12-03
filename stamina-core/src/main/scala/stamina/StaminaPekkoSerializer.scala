@@ -1,11 +1,11 @@
 package stamina
 
-import akka.serialization._
+import org.apache.pekko.serialization._
 
 /**
- * A custom Akka Serializer specifically designed for use with Akka Persistence.
+ * A custom Pekko Serializer specifically designed for use with Pekko Persistence.
  */
-abstract class StaminaAkkaSerializer private[stamina] (persisters: Persisters, codec: PersistedCodec) extends Serializer {
+abstract class StaminaPekkoSerializer private[stamina] (persisters: Persisters, codec: PersistedCodec) extends Serializer {
   def this(persisters: List[Persister[_, _]], codec: PersistedCodec = DefaultPersistedCodec) = this(Persisters(persisters), codec)
   def this(persister: Persister[_, _], persisters: Persister[_, _]*) = this(Persisters(persister :: persisters.toList), DefaultPersistedCodec)
 
