@@ -36,16 +36,16 @@ lazy val libSettings = basicSettings ++ publishingSettings
 lazy val root = Project("stamino", file("."))
   .settings(basicSettings: _*)
   .settings(publishingSettings: _*)
-  .aggregate(core, json, testkit)
+  .aggregate(`stamino-core`, `stamino-json`, `stamino-circe`, `stamino-testkit`)
   .enablePlugins(ReproducibleBuildsPlugin)
 
-lazy val core = Project("stamino-core", file("stamino-core"))
+lazy val `stamino-core` = Project("stamino-core", file("stamino-core"))
   .settings(libSettings: _*)
   .settings(libraryDependencies ++= compileDeps(pekkoActor) ++ testDeps(scalatest))
   .enablePlugins(ReproducibleBuildsPlugin)
 
-lazy val json = Project("stamino-json", file("stamino-json"))
-  .dependsOn(core)
+lazy val `stamino-json` = Project("stamino-json", file("stamino-json"))
+  .dependsOn(`stamino-core`)
   .settings(libSettings: _*)
   .settings(
     libraryDependencies ++=
@@ -54,8 +54,19 @@ lazy val json = Project("stamino-json", file("stamino-json"))
   )
   .enablePlugins(ReproducibleBuildsPlugin)
 
-lazy val testkit = Project("stamino-testkit", file("stamino-testkit"))
-  .dependsOn(core)
+lazy val `stamino-circe` = Project("stamino-circe", file("stamino-circe"))
+  .dependsOn(`stamino-core`)
+  .settings(libSettings: _*)
+  .settings(
+    libraryDependencies ++= compileDeps(circe: _*) ++ testDeps(
+      scalatest,
+      "io.circe" %% "circe-optics" % "0.15.0",
+    ),
+  )
+  .enablePlugins(ReproducibleBuildsPlugin)
+
+lazy val `stamino-testkit` = Project("stamino-testkit", file("stamino-testkit"))
+  .dependsOn(`stamino-core`)
   .settings(libSettings: _*)
   .settings(libraryDependencies ++= compileDeps(scalatest))
   .enablePlugins(ReproducibleBuildsPlugin)

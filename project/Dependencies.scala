@@ -6,6 +6,7 @@ object Dependencies {
   val sprayJson  = "io.spray"          %% "spray-json"  % "1.3.6"
   val jsonLenses = "net.virtual-void"  %% "json-lenses" % "0.6.2"
   val scalatest  = "org.scalatest"     %% "scalatest"   % "3.2.19"
+  val circe = Seq("circe-generic", "circe-parser").map("io.circe" %% _ % "0.14.10")
   // format: ON
 
   // Dependency scoping functions
