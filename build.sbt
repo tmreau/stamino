@@ -9,6 +9,7 @@ lazy val basicSettings = Seq(
   organization       := "org.make",
   licenses           := Seq("The MIT License (MIT)" -> url("http://opensource.org/licenses/MIT")),
   scalaVersion       := scala2,
+  version            := "0.1",
   crossScalaVersions := supportedScalaVersions,
   scalacOptions := Seq(
     "-encoding",
